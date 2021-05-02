@@ -1,41 +1,40 @@
-class MyArray {
-  constructor() {
-    this.length = 0;
-    this.data = {};
-  }
-  get(index) {
-    return this.data[index]
-  }
-  push(item) {
-    this.data[this.length] = item;
-    this.length++
-    return this.length;
-  }
+// Create a function that reverses a string
+// 'Hi My Name Is Val' should be:
+// 'laV sI emaN yM iH'
 
-  pop(item) {
-    // this.data[this.length-1]
-    delete this.data[this.length-1]
-    this.length--;
-    return item
-  }
-
-  delete(index) {
-    const item = this.data[index];
-    this.shiftItems(index);
-  }
-
-  shiftItems(index) {
-    for (let i = 0; i < this.length - 1; i++) 
-    {
-      this.data[i] = this.data[i+1];
-    }
-  } 
+function reverse(str) {
+//  check the input
+if(!str || str.length < 2 || typeof str !== 'string') {
+  return 'hmm thats not good'
 }
 
-const newArray = new MyArray();
-newArray.push('hi');
-newArray.push('key');
-newArray.push('angel');
-newArray.pop();
-newArray.pop();
- 
+
+// this implementation turns our string to array while turning it backwards
+const backwards = [];
+const totalItems = str.length -1;
+for (let i = totalItems; i >= 0; i--) {
+  backwards.push(str[i])
+}
+console.log(backwards)
+
+
+// this will return the array back to a final result which is a turned string
+return backwards.join('')
+}
+
+
+// we can use a built in method
+function reverse2(str) {
+  return str.split('').reverse().join('')
+}
+
+// More mothern cleaner way to do input
+const reverse3 = str => str.split('').reverse().join('')
+
+// If you want to get more fancy, you can even destructure
+const reverse3 = str => [...str].reverse().join('')
+
+
+
+reverse3(`Hi My Name Is Val`)
+
